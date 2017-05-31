@@ -35,12 +35,11 @@ module.exports = function whalify(sourceDir, destDir) {
 
 if (require.main === module) {
   const argv = require('yargs').usage('Usage: $0 [package] [destination]').strict().help().argv;
-  console.log(argv);
   module.exports(argv._[0], argv._[1]);
 }
 
 function packModule(buildDir, modulePath) {
-  return execTrim('npm pack', { cwd: modulePath }).then(function(archiveName) {
+  return execTrim('npm pack', { cwd: modulePath, silent: true }).then(function(archiveName) {
     const archivePath = path.join(modulePath, archiveName);
     const destPath = path.join(buildDir, archiveName);
 
