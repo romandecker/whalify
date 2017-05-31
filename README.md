@@ -40,10 +40,6 @@ FROM node:latest
 
 RUN apt-get update
 
-# Enable use of custom npm tokens for private registries
-ARG NPM_AUTH_TOKEN
-RUN echo "//registry.npmjs.org/:_authToken=\"$NPM_AUTH_TOKEN\"" >> ~/.npmrc
-
 ENV BUILD_DIR=/whalify
 COPY .whalify $BUILD_DIR   # copy the .whalify directory into the image
 WORKDIR $BUILD_DIR
