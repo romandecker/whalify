@@ -1,6 +1,6 @@
 {
   "name": "whalify",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Easily package a node app into a docker container, while preserving links to other npm-modules.",
   "main": "index.js",
   "dependencies": {
