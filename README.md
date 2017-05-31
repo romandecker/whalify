@@ -34,6 +34,26 @@ recursively) and then create an installation script at the base of the destinati
 that will install all of the required packages in the correct order globally and link
 them just like they are in your current development environment.
 
+Here's an example `Dockerfile`:
+``` dockerfile
+FROM node:latest
+
+RUN apt-get update
+
+# Enable use of custom npm tokens for private registries
+ARG NPM_AUTH_TOKEN
+RUN echo "//registry.npmjs.org/:_authToken=\"$NPM_AUTH_TOKEN\"" >> ~/.npmrc
+
+ENV BUILD_DIR=/whalify
+COPY .whalify $BUILD_DIR   # copy the .whalify directory into the image
+WORKDIR $BUILD_DIR
+RUN ./install.sh           # run the whalify-generated installer
+
+
+# At this point your module will be installed globally in the image
+# All binaries it provides are now available in your $PATH
+```
+
 ## Documentation
 
 ### whalify(source, dest)
