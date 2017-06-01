@@ -13,9 +13,9 @@ are correctly installed into the system as well.
 ## Usage (cli)
 
 ``` shell
-whalify                                  # will whalify the current module into a folder `.whalify`
-whalify ../path/to/my/module             # will whalify module at path to ../path/to/my/module/.whalify
-whalify ../path/to/my/module destination # will whalify module at path to the given destination directory
+whalify generate-installer                                  # will whalify the current module into a folder `.whalify`
+whalify generate-installer ../path/to/my/module             # will whalify module at path to ../path/to/my/module/.whalify
+whalify generate-installer ../path/to/my/module destination # will whalify module at path to the given destination directory
 ```
 
 
@@ -24,7 +24,7 @@ whalify ../path/to/my/module destination # will whalify module at path to the gi
 ``` javascript
 const whalify = require('whalify');
 
-whalify( 'path/to/source', 'path/to/dest' )
+whalify.generateInstaller( 'path/to/source', 'path/to/dest' )
 ```
 
 ## Using the created files
@@ -49,6 +49,11 @@ RUN ./install.sh           # run the whalify-generated installer
 # At this point your module will be installed globally in the image
 # All binaries it provides are now available in your $PATH
 ```
+
+Note that you can generate a sample dockerfile using `whalify generate-dockerfile`.
+
+You can then build the image using docker, or using `whalify build` (which will just call docker
+behind the scenes and provide it with some build args automatically).
 
 ## Documentation
 
