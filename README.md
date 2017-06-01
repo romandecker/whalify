@@ -57,8 +57,28 @@ behind the scenes and provide it with some build args automatically).
 
 ## Documentation
 
-### whalify(source, dest)
+### generateInstaller(source, dest)
 
+Generate the necessary whalify-installer for use in a `Dockerfile`.
+
+Arguments:
+
+* `source` (default=`process.cwd`): Path to the module to whalify. Should point to a folder containing a `package.json` file.
+* `dest` (default=`<source>/.whalify`): Path to put the installation files.
+
+
+### build(path, imageName, options)
+
+Take a path to a module containing a Dockerfile and build it using docker. Requires the `docker`
+executable to be available on your `PATH`.
+
+* `source`: Path to the module directory to build using docker. A `Dockerfile` should reside in this directory.
+* `imageName`: The image will be built under this name (this is passed to `docker build` using the `-t` option)
+* `options`: Additional options
+ * `authToken`: An additional NPM auth token to use when building, will be passed as `--build-arg
+                NPM_AUTH_TOKEN` to `docker build`
+ * `silent` (default=`false`): Set to true to not output anything to stdout
+ 
 Arguments:
 
 * `source` (default=`process.cwd`): Path to the module to whalify. Should point to a folder containing a `package.json` file.
