@@ -20,10 +20,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git@github.com/DeX3/whalify.git"
+    "url": "git+https://github.com/DeX3/whalify.git"
   },
+  "homepage": "https://github.com/DeX3/whalify",
   "keywords": [
-    "docker"
+    "docker",
+    "build"
   ],
   "author": "Roman Decker <roman.decker@gmail.com>",
   "license": "MIT"
